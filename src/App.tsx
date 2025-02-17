@@ -1,4 +1,5 @@
 import MainLayout from "./components/layout/MainLayout"
+import ProtectedRoute from "./components/layout/ProtectedRoutes"
 
 
 function App() {
@@ -6,7 +7,10 @@ function App() {
 
   return (
 <div>
-<MainLayout></MainLayout>
+  <ProtectedRoute>
+    <MainLayout></MainLayout>
+  </ProtectedRoute>
+
 </div>
   )
 }
