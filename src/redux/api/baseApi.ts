@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { toast } from 'sonner';
 import { setUser } from '../features/auth/authSlice';
 import { RootState } from './../features/store';
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
@@ -21,6 +22,12 @@ const baseQueryWithRefreshToken = async (args: any, api: any, extraOptions: any)
     let result = await baseQuery(args, api, extraOptions);
 
 
+    //Chack User
+    if (result?.error?.status == 404) {
+        toast.error('User not found')
+    }
+    //
+
     //Regenarate Access token send Backend and Set Redux 
 
     if (result.error?.status == 401) {
@@ -29,20 +36,26 @@ const baseQueryWithRefreshToken = async (args: any, api: any, extraOptions: any)
 
         const res = await fetch('http://localhost:5000/api/v1/auth/refresh-token', {
             method: "POST",
-            credentials: 'include'
+            credentials: 'include'//frontend thkea cooki patassa sakan theka backend ata access kora refreash token nia ta regenarate kora dissa...
         });
         const data = await res.json();
 
         console.log("basi :", data)
-        const user = (api.getState() as RootState).auth.user;
-        console.log("base",user)
-        api.dispatch(
-            setUser({
-                user,
-                token: data.data.accessToken,
-            })
-        );
-        result = await baseQuery(args,api,extraOptions)
+        //accessToken dath or alive
+
+        if (data?.data?.accessToken) {
+            const user = (api.getState() as RootState).auth.user;
+            console.log("base", user)
+            api.dispatch(
+                setUser({
+                    user,
+                    token: data.data.accessToken,
+                })
+            );
+            result = await baseQuery(args, api, extraOptions)
+        }
+
+        //accessToken dath or alive end this conditions 
     }
 
     return result;

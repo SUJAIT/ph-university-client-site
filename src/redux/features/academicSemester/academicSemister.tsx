@@ -7,10 +7,8 @@ const academicSemesterApi = baseApi.injectEndpoints({
               query:() =>({
             url: '/academic-semesters',
             method:'GET',
-        
         })
         })
-      
     })
 })
 

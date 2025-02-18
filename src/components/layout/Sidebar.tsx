@@ -10,7 +10,7 @@ import { superAdminPaths } from "../../routes/superadmin.routes";
 
 const userRole = {
     ADMIN : "admin",
-    SUPERADMIN : "superAdmin",
+    SUPERADMIN :"superAdmin",
     FACULTY :"faculty",
     STUDENT : "student"
 }
@@ -41,6 +41,7 @@ switch (user!.role) {
     <Sider
     breakpoint="lg"
     collapsedWidth="0"
+    style={{ height: '100vh', position: 'sticky', top: '0', left: '0' }}
     onBreakpoint={(broken) => {
       console.log(broken);
     }}

@@ -1,9 +1,15 @@
 
+import AcademicDepartment from "../pages/admin/AcademicManagement/AcademicDepartment";
+import AcademicFaculty from "../pages/admin/AcademicManagement/AcademicFaculty";
 import AcademicSemester from "../pages/admin/AcademicManagement/AcademicSemester";
+import CreateAcademicDepartment from "../pages/admin/AcademicManagement/CreateAcademicDepartment";
+import CreateAcademicFaculty from "../pages/admin/AcademicManagement/CreateAcademicFaculty";
+import CreateAcademicSemester from "../pages/admin/AcademicManagement/CreateAcademicSemester";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateStudent from "../pages/admin/CreateStudent";
+
 // import { ReactNode } from 'react';
 
 
@@ -16,14 +22,40 @@ export const superAdminPaths = [
   },
   {
     name: 'Academic Management',
-    children : [
+    children: [
+
+      {
+        name: "Create Academic Semester",
+        path: 'create-academic-semester',
+        element: <CreateAcademicSemester />
+      },
       {
         name: "Academic Semester",
         path: 'academic-semester',
-        element:<AcademicSemester/>
-      }
-    ]
+        element: <AcademicSemester />
       },
+      {
+        name: "Academic Department",
+        path: 'academic-Department',
+        element: <AcademicDepartment />
+      },
+      {
+        name: "Create Academic Department",
+        path: 'create-academic-Department',
+        element: <CreateAcademicDepartment />
+      },
+      {
+        name: "Academic Faculty",
+        path: 'academic-faculty',
+        element: <AcademicFaculty />
+      },
+      {
+        name: "Academic Faculty",
+        path: 'create-academic-faculty',
+        element: <CreateAcademicFaculty />
+      },
+    ]
+  },
   {
     name: 'User Management',
     children: [
@@ -47,6 +79,7 @@ export const superAdminPaths = [
         path: 'create-member',
         element: <CreateStudent />,
       },
+
     ],
   },
 ];
