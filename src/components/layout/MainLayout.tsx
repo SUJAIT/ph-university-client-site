@@ -19,7 +19,7 @@ const MainLayout = () => {
   const handleLogout = () =>{
     dispatch(logout());
   }
-console.log(handleLogout)
+
 
   return (
     <Layout style={{ height: "100%" }}>

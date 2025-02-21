@@ -17,6 +17,7 @@ const baseQuery = fetchBaseQuery({
         return headers;
     }
 });
+console.log("baseQuery", baseQuery)
 
 const baseQueryWithRefreshToken = async (args: any, api: any, extraOptions: any) => {
     let result = await baseQuery(args, api, extraOptions);
@@ -24,7 +25,9 @@ const baseQueryWithRefreshToken = async (args: any, api: any, extraOptions: any)
 
     //Chack User
     if (result?.error?.status == 404) {
-        toast.error('User not found')
+        if (result.error.data && typeof result.error.data === 'object' && 'message' in result.error.data) {
+            toast.error((result.error.data as { message: string }).message);
+        }
     }
     //
 
