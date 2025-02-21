@@ -4,7 +4,7 @@ import { setUser } from '../features/auth/authSlice';
 import { RootState } from './../features/store';
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
+//bhjijkkkkkkkkkkn
 const baseQuery = fetchBaseQuery({
     baseUrl: 'http://localhost:5000/api/v1',
     credentials: "include",  //কুকিজ (cookies), অথরাইজেশন হেডার (authorization headers), এবং অন্যান্য ক্রেডেনশিয়াল তথ্য ব্রাউজারের সাথে সার্ভারে পাঠাবে। / credentials: "include" সেট করলে, এটি ব্রাউজারের cookies বা session সংরক্ষিত অথেন্টিকেশন তথ্য সার্ভারে পাঠানোর অনুমতি দেয়।
